@@ -6,6 +6,7 @@
 #include <ATen/detail/PrivateUse1HooksInterface.h>
 #include <c10/core/CPUAllocator.h>
 #include <c10/util/safe_numerics.h>
+#include <cstdio>
 
 #include <limits>
 
@@ -279,6 +280,7 @@ TensorBase empty_cpu(
 
 TensorBase empty_cpu(
     IntArrayRef size, const TensorOptions &options) {
+  printf("283:: empty_cpu");
   return at::detail::empty_cpu(
       size,
       optTypeMetaToScalarType(options.dtype_opt()),
@@ -361,6 +363,7 @@ TensorBase empty_meta(
   std::optional<bool> pin_memory_opt,
   std::optional<c10::MemoryFormat> memory_format_opt
 ) {
+  printf("366 empty_meta");
   TORCH_INTERNAL_ASSERT_DEBUG_ONLY(device_or_default(device_opt).type() == DeviceType::Meta);
   // NB: because there is no SparseMeta (yet), non-strided layout is
   // exerciseable
@@ -381,6 +384,7 @@ TensorBase empty_symint_meta(
   std::optional<bool> pin_memory_opt,
   std::optional<c10::MemoryFormat> memory_format_opt
 ) {
+  printf("387 empty_symint_meta");
   auto *allocator = GetAllocator(kMeta);
   constexpr c10::DispatchKeySet ks(c10::DispatchKey::Meta);
   auto scalar_type = dtype_or_default(dtype_opt);

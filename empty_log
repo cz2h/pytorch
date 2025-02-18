@@ -1,0 +1,50 @@
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+Hello, World!
+zeros.ones meta
+[2, 3] <class 'list'>
+torch.float32 None meta 
+
+zeros.ones meta
+[2, 3] <class 'list'>
+torch.float32 torch.strided meta 
+
+tensor([[1., 1., 1.],
+        [1., 1., 1.]])
+zeros.ones meta
+[s2, s3] <class 'list'>
+torch.float32 None meta 
+
+zeros.ones meta
+[s0, s1] <class 'list'>
+torch.float32 torch.strided meta 
+
+tensor([[1., 1., 1., 1.],
+        [1., 1., 1., 1.],
+        [1., 1., 1., 1.]])

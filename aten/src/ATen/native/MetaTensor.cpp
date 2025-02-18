@@ -1,6 +1,7 @@
 #define TORCH_ASSERT_ONLY_METHOD_OPERATORS
 #include <ATen/EmptyTensor.h>
 #include <ATen/core/Tensor.h>
+#include <iostream>
 
 #ifndef AT_PER_OPERATOR_HEADERS
 #include <ATen/NativeFunctions.h>
@@ -19,7 +20,7 @@ Tensor empty_meta_symint(
   std::optional<bool> pin_memory_opt,
   std::optional<c10::MemoryFormat> memory_format_opt
 ) {
-
+  std::cout << "Hello, World!" << std::endl;
   auto opt_size = asIntArrayRefSlowOpt(size);
   if (opt_size.has_value()) {
     return at::detail::empty_meta(*opt_size, dtype_opt, layout_opt, device_opt, pin_memory_opt, memory_format_opt);

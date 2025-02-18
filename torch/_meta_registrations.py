@@ -4736,6 +4736,69 @@ def full(size, fill_value, *args, **kwargs):
     kwargs["dtype"] = dtype
     return torch.empty(size, *args, **kwargs)
 
+# RuntimeError: aten.empty.out is a CompositeImplicitAutograd op, we shouldn't register meta function for it. 
+# Instead, we should let the decomposition run and write meta kernels for the base operators.
+# @register_meta([aten.empty.out])
+# @out_wrapper()
+# def meta_empty(
+#     self,
+#     dtype=None,
+#     layout=None,
+#     device=None,
+#     requires_grad=False,
+#     pin_memroy=False,
+#     memory_format=torch.contiguous_format
+# ):
+#     print('zeros.empty meta')
+#     print(self, type(self))
+#     print(dtype, layout, device, '\n')
+#     return torch.empty(
+#             self,
+#             dtype=dtype,
+#             layout=layout,
+#             device=device,
+#         )
+
+
+@register_meta([aten.ones.default, aten.ones.out])
+@out_wrapper()
+def meta_ones(
+    self,
+    dtype=None,
+    layout=None,
+    device=None,
+):
+    print('zeros.ones meta')
+    print(self, type(self))
+    print(dtype, layout, device, '\n')
+    # result_size = list(self.size())
+    return torch.empty(
+            self,
+            dtype=dtype,
+            layout=layout,
+            device=device,
+        )
+
+
+@register_meta([aten.zeros.default, aten.zeros.out])
+@out_wrapper()
+def meta_zeros(
+    self,
+    dtype=None,
+    layout=None,
+    device=None,
+):
+    print('zeros.out meta')
+    print(self, type(self))
+    print(dtype, layout, device, '\n')
+    # result_size = list(self.size())
+    return torch.empty(
+            self,
+            dtype=dtype,
+            layout=layout,
+            device=device,
+        )
+
 
 # zeros_like is special cased to work for sparse
 @register_meta(aten.zeros_like.default)
